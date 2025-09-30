@@ -1,33 +1,96 @@
 pipeline {
-  agent any
+    agent any
+
     tools {
-      maven 'maven3'
-                 jdk 'JDK8'
+        jdk "java"
+        maven "M2_HOME"
     }
-    stages {      
-        stage('Build maven ') {
-            steps { 
-                    sh 'pwd'      
-                    sh 'mvn  clean install package'
+
+    options {
+        
+        timestamps()
+        buildDiscarder(logRotator(numToKeepStr: '1'))
+    }
+
+    parameters {
+        string(name: 'BRANCH_NAME', defaultValue: 'master', description: 'Git branch to build')
+        string(name: 'DOCKER_CREDENTIALS', defaultValue: 'dockercredentials', description: 'Credential ID for DockerHub')
+    }
+
+    environment {
+        IMAGE_NAME = "cicdcontainer/epro"
+    }
+
+    stages {
+        stage("Clone") {
+            steps {
+                echo " Cloning branch: ${params.BRANCH_NAME}"
+                git branch: "${params.BRANCH_NAME}", url: 'https://github.com/sresrinivas/cicdpipeline.git'
+            }
+        }
+    stage("Linitng and Formatting")
+    {
+          steps
+          {
+                sh "mvn checkstyle:checkstyle"
+          }
+    }
+    
+    
+    stage("Secret Scan") {
+    steps {
+        echo "Running Gitleaks to scan for secrets"
+        sh '''
+            gitleaks detect --source . \
+                --report-format sarif \
+                --report-path gitleaks-report.sarif || true
+        '''
+    }
+}
+  
+        stage("Dependency Analysis") {
+            steps {
+                echo " Running Maven dependency analysis"
+                sh "mvn dependency:analyze"
             }
         }
         
-        stage('Copy Artifact') {
-           steps { 
-                   sh 'pwd'
-		   sh 'cp -r target/*.jar docker'
-           }
+         stage("OWASP Dependency Check") {
+    steps {
+        echo " Running Dependency-Check via Maven"
+        sh '''
+            mvn org.owasp:dependency-check-maven:check \
+                -Dformat=ALL \
+                -DoutputDirectory=target/dependency-check-report \
+                -DfailBuildOnCVSS=9 || true
+        '''
+    }
+         }
+   
+      stage("compile/build")
+      {
+            steps
+            {
+                  sh "mvn compile"
+            }
+      }
+
+        stage("Unit Tests") {
+            steps {
+                echo " Running unit tests"
+                sh "mvn test"
+            }
+            
         }
-         
-        stage('Build docker image') {
-           steps {
-               script {         
-                 def customImage = docker.build('cicdcontainer/petclinic', "./docker")
-                 docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-                 customImage.push("${env.BUILD_NUMBER}")
-                 }                     
-           }
-        }
-	  }
+          stage("code coverage report")
+          {
+                steps
+                {
+                      sh "mvn jacoco:report"
+                }
+          }
     }
 }
+
+          
+
