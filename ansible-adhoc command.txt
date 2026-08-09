@@ -1,0 +1,149 @@
+Excellent! Once ansible -m ping works, practice these ad-hoc commands. These are commonly used in real projects.
+
+1. Test Connectivity
+ansible ubuntu -m ping
+
+2. Check Uptime
+ansible ubuntu -m command -a "uptime"
+
+3. Check Logged-in User
+ansible ubuntu -m command -a "whoami"
+
+4. Check Hostname
+ansible ubuntu -m command -a "hostname"
+
+5. Check Operating System
+ansible ubuntu -m command -a "cat /etc/os-release"
+
+6. Check Kernel Version
+ansible ubuntu -m command -a "uname -r"
+
+7. Check CPU Information
+ansible ubuntu -m command -a "lscpu"
+
+8. Check Memory
+ansible ubuntu -m command -a "free -h"
+
+
+9. Check Disk Usage
+ansible ubuntu -m command -a "df -h"
+
+10. Check Mounted Filesystems
+ansible ubuntu -m command -a "mount"
+
+11. Check IP Address
+ansible ubuntu -m command -a "ip addr"
+
+12. Check Open Ports
+ansible ubuntu -m command -a "ss -tulpn"
+
+13. Check Running Processes
+ansible ubuntu -m command -a "ps -ef"
+
+14. Check Running Services
+ansible ubuntu -m command -a "systemctl list-units --type=service"
+
+15. Check Available Updates
+ansible ubuntu -m command -a "apt list --upgradable"
+
+File Module
+Create Directory
+ansible ubuntu -m file -a "path=/opt/demo state=directory"
+
+Create File
+ansible ubuntu -m file -a "path=/opt/demo/test.txt state=touch"
+
+Delete File
+ansible ubuntu -m file -a "path=/opt/demo/test.txt state=absent"
+
+Delete Directory
+ansible ubuntu -m file -a "path=/opt/demo state=absent"
+
+Copy Module
+
+Copy a file from the controller to Ubuntu:
+
+ansible ubuntu -m copy -a "src=/etc/hosts dest=/tmp/hosts"
+
+Fetch Module
+
+Copy a file from Ubuntu to the controller:
+
+ansible ubuntu -m fetch -a "src=/etc/hostname dest=/tmp/"
+Package Module
+
+Install Git:
+
+ansible ubuntu -m apt -a "name=git state=present" --become
+
+Install Nginx:
+
+ansible ubuntu -m apt -a "name=nginx state=present" --become
+
+Remove Nginx:
+
+ansible ubuntu -m apt -a "name=nginx state=absent" --become
+Service Module
+
+Start Nginx:
+
+ansible ubuntu -m service -a "name=nginx state=started" --become
+
+Stop Nginx:
+
+ansible ubuntu -m service -a "name=nginx state=stopped" --become
+
+Restart Nginx:
+
+ansible ubuntu -m service -a "name=nginx state=restarted" --become
+
+Enable Nginx:
+
+ansible ubuntu -m service -a "name=nginx enabled=yes" --become
+User Module
+
+Create User:
+
+ansible ubuntu -m user -a "name=developer state=present" --become
+
+Delete User:
+
+ansible ubuntu -m user -a "name=developer state=absent remove=yes" --become
+Group Module
+
+Create Group:
+
+ansible ubuntu -m group -a "name=devops state=present" --become
+Shell Module
+
+Current Date:
+
+ansible ubuntu -m shell -a "date"
+
+Create Multiple Directories:
+
+ansible ubuntu -m shell -a "mkdir -p /tmp/{app,logs,backup}"
+Reboot Module
+
+Reboot Ubuntu:
+
+ansible ubuntu -m reboot --become
+Gather Facts
+ansible ubuntu -m setup
+
+Specific network facts:
+
+ansible ubuntu -m setup -a "filter=ansible_default_ipv4"
+
+Memory facts:
+
+ansible ubuntu -m setup -a "filter=ansible_mem*"
+Multiple Hosts
+
+Ping all hosts:
+
+ansible all -m ping
+
+Check disk space on all hosts:
+
+ansible all -m command -a "df -h"
