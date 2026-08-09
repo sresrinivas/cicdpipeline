@@ -1,3 +1,6 @@
 FROM openjdk:11.0.5-jdk
-ADD *.jar app.jar
-ENTRYPOINT java -jar app.jar
+WORKDIR /app
+COPY target/*.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","app.jar"]
+

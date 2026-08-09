@@ -1,0 +1,1662 @@
+06/30/2026:
+**************
+
+what is Linux server:
+*********************
+
+is a os
+is  a server side 
+gui
+cli
+
+os:
+*******
+is a interface between user and h/w
+
+user--developer/tester/devops/---vm/vpn---rdp--Linux machine---login
+
+work--task--terminal -commands/script--English ---interpretor  [shell]
+
+--tokens----- clang  os/kernel-clang--
+
+
+h/w---0,1
+
+h/w:-------------->cpu/gpu---
+
+
+what is os:------Linux/unix
+Linux:ubuntu/redhat/centos/kali/suse
+
+hostmachine:--->vm ware software---windows---vm----3 machine
+
+vm1---windows
+vm2----Linux
+vm-3 mac
+vm4----unix
+
+cloud :aws root user/iam user 
+
+webservice:
+***************
+what is shell
+what is kernel
+what is terminal: user
+what is the architecture of the Linux?
+****************************************************************************************************************************************
+
+07/01/2026:
+************
+
+
+do I login as root user or IAM 
+
+what is the region ----geographic location----multiple datacenters-----AZ
+
+every region have its own code:--ap-south-1
+
+developer: 
+devops engineer: ---management console[no use]
+                 ---API
+                 ----templates: terraform/cft/pulimi
+                 --sdk
+                 ---cdk
+                  --cli
+
+application:
+
+which module
+
+categories of services
+
+
+compute
+
+
+
+
+
+cltr +l--to clear the screen
+
+clear 
+
+root user
+iam user
+=====================================
+servers:normal user
+       :admin/root user
+
+normal user:--->prompt $
+root user:  promot #
+
+07/02/2026:
+************
+Modules:
+*********
+
+ Linux fundamentals:
+ booting process
+ FHS
+ FILE AND DIRECTORY MANAGEMENT
+ USER AND GROUP MANAGEMENT
+ PACAKGE MANAGEMENT
+ PROCESS MANAGMENT
+ JOB MANAGEMENT
+ SERVICE MANAGEMENT
+ DISK AND VOLUME MANAGEMENT[LVM,RAIDLEVEL]
+ MEMORY MANAGEMENT
+ NETWORKING MANGEMENT
+ SSH AND REMOTE ADMINISTRATION
+ LOGGING AND MONITORING
+ SECURITY MANAGEMENT
+ DB MANAGEMENT
+ APP SERVER/WEBSERVER MANAGEMENT
+ PERFORAMNCE TUNING AND TROUBLE SHOOTING
+ CLUSTERING 
+ BACKUPAUOTMATION
+
+way to connect to the ec2 instance:
+***********************************
+ssh client
+ec2 instanaceconnect---AmazonLinux
+
+putty/puttygen
+.pem
+.ppk
+
+WKl6S*l-mO5Tw*$N6ruB2oECIGzYWhBk
+
+install putty and puttygen
+
+download putty 
+
+
+https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+
+mobaxterm
+
+download mobaxterm
+
+Network Issue
+
+ssh Administrator@publicip
+ssh
+
+How to connect to windows server ec2 instance using
+ssh client
+
+How to Launch the mac server
+
+
+
+
+
+ 
+
+  
+https://ap-south-1.console.aws.amazon.com/ec2/home?region=ap-south-1#LaunchInstances:
+ 
+
+
+07
+
+
+
+
+07/03/2026:
+**************
+
+
+
+
+
+
+
+
+download mobaxterm
+
+   ssh,rdp,vnc ,ftp/sftp,telnet,serial connections,winscp
+
+
+desktop---lapy--windows---d drive--docs-------------copy --remote mubai ec2 server
+
+WinSCP
+
+
+application-----os---h/w
+graphical window
+
+07/07/2026:
+****************
+booting process in linux
+
+
+troubleshoot servers
+ how to start the failed servers
+ recover cloud VM
+ how os initializes
+
+
+h/w-------------------------------os----------------------------s/w
+cpu,ram,disk,nic
+
+
+storage---disk---ram--cpu-------nic
+
+
+
+open lapy---browser---internet----request------NIC-----cpu------ram------disk
+poweron--
+================================================================================
+
+
+aws controls:
+
+   physical servers
+    CPU
+     RAM
+   Storage h/w
+    phy nic
+    data center
+    Hypervisor
+    vm creation
+    vm isolations
+    network virtualization
+
+
+
+what you control:
+**********************
+
+server is 
+
+    control the OS
+    users
+    packages
+    docker
+   k8s
+   applciations
+  files
+   services
+   firewall inside the os
+
+what is EC2:
+****************
+vcpu
+vram
+VPC
+ vdisk
+AWS nitro system
+
+can you install "your own virtualization software"?
+***************************************************
+
+yes but in side the ec2 instance
+
+
+
+
+
+what kid of vrtualization supported in aws:
+*******************************************
+
+    
+   
+1) server(compute virtualization:
+*********************************
+
+
+physical server------------------ec2 instance
+
+
+
+network virtualization:
+**************************
+
+
+vpc
+
+storage virtualization:
+************************
+
+ebs/efs/fsx
+
+
+
+hardware offloading[Nitro]:
+*******************************
+
+dedicated nitro hardware cards to  offload the tasks such
+
+   network
+   storage
+   security
+   management
+
+VMware  esxi
+
+aws nitro system and nitro hypervisor
+
+
+
+hvm---hardware assisted server virtualization :
+************************************************
+
+intel 
+amd
+arm
+gpu
+
+intel vt-x
+AMD-V
+
+
+what is AWS nitro system:
+*****************************
+
+
+nitro hypervisor:
+nitro cards
+nitro security chip
+
+
+
+
+aws physical server--------> cpu,ram,disk,nic----intel /amd with VT-X/AMD-V]----awsnitro hardware---
+
+hypervisor----ec2 server
+
+\
+
+ 4189 6980  5984 8009 
+
+
+
+srinivas--10 ec2 --mumabi--az1
+prasad---20 ec2-----mum---az2
+
+************************************************
+07/8/2026:----------->noclass
+*************************************************
+
+07/09/2026: booting:
+booting process in Linux:
+****************************
+
+$ or #
+
+series of steps between power on to till login screen
+step 1:
+***********
+
+press powerbutton
+server/servers/cluster/clusters--datacenter--only hardware
+firmware
+
+step2: BIOS/UEFI
+CHECK h/w and find where the os is stored
+
+step 3:POST---power on self test
+
+step 4: harddisk/ssd/nvme
+
+        /boot
+        /
+       swp
+
+ where is bootloader
+
+
+step 5: loads the Linux kernel in to RAM
+
+      GRUB----GRAND UNIFIED BOOTLOADER
+
+STEP 6: Linux kernel initialized
+
+step 7: init/systemd----process  id of systemd--PID-1
+
+        networking
+        ssh
+        logging
+       services
+ 
+
+step 8: login screen:
+          username/passwd
+
+session begins
+
+systemctl -is-system-running
+ouputs:
+***********
+running:---------------boot successful
+degraded--------------------some service failed
+starting------------------still booting
+maintainance--------------serious issue
+
+check boot logs:
+*******************
+
+boot time
+system uptime
+
+0----------current boot
+-1--------- previous boot
+-2--------two boots ago
+
+
+ec2 boot status:
+   system status check: 
+   instance status check
+
+shutdown
+boot
+reboot
+
+13.233.254.184
+13.233.254.184
+
+ec2-13-233-254-184.ap-south-1.compute.amazonaws.com
+13.206.124.13
+
+ec2-13-233-254-184.ap-south-1.compute.amazonaws.com closed by remote host.
+Connection to ec2-13-233-254-184.ap-south-1.compute.amazonaws.com closed.
+ec2-13-206-124-13.ap-south-1.compute.amazonaws.com
+
+
+ec2-13-233-254-184.ap-south-1.compute.amazonaws.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+************************
+07/10/2026:
+
+aws control plane:
+
+   launch instance
+   start,stop,restart,reboot instances
+   attach EBS
+   attach ENI--NIC
+USER--BROWSER-URL--REQUEST--NIC---CPU---RAM-DISK
+ IAM authorization
+ tags
+ securitugroups
+ api requests
+
+aws data plane
+***************
+running vm
+cpu execution
+memory-------------------------->Linux server lives here
+networking
+storage I/O
+
+guestos
+physical os
+================================================
+
+2 users:
+***********
+normal user: $  id>=1000
+super user:  #  id=0
+software related file
+os related files
+
+normal files    -
+directories     d
+socket files    s
+device file     b,character files: c
+link files     l
+block files
+named pipes    p
+
+file system inlinux:
+***********************
+/---beginning of the file system
+
+
+/home: home directory for the normal user
+/root:  home directory for the root user
+/etc: is a directory contains system-wide files
+       and settings
+/bin: is adirectory for users commands
+/dev: device files--disks/terminal
+/boot: kernel,grub ,initramfs
+
+all predefined directories are placed under /
+
+/
+
+cd .
+cd ..
+cd ~
+
+/etc/
+/home
+/root
+
+commands:
+      pwd
+      echo welcome to srinivas
+       echo $HOME
+       pwd
+      echo $HOME
+      cd ..
+      clear
+      pwd
+      echo $home
+      echo $HOME
+      pwd
+      ls
+      ls -la
+      clear
+      ls
+      cd /etc
+      pwd
+     ls
+      clear
+      exit
+     cd /etc
+     pwd
+     ls -la
+     clear
+     pwd
+     cat passwd
+     clear
+     exit
+   
+sudo useradd Srinivas
+sudo su -
+
+====================================================================================================================
+07/13/2026:
+***************
+
+/[begining]
+top level directory
+
+every file and directory starts from here
+CI/CD PIPELINE: JENKINS/GitLab/
+
+/etc:
+***********
+contains system and application configuration
+ 
+/etc/passwd
+/etc/system
+/etc/ssh/sshd_config
+
+cat /etc/os-release
+
+os: command/configuration/settings/scripting
+
+
+
+cicd tasks:--
+
+/home
+
+git
+scripts
+ssh keys
+/root
+
+
+/var:
+/var/log
+/var/spool
+/var/lib/Jenkins
+/var/cache
+
+
+
+/tmp
+
+/bin
+/sbin
+
+/usr:
+*********
+
+/usr/bin
+/usr/sbin
+
+
+which java
+
+.exe
+.jar
+.war
+.ear
+image
+zip
+tar.gz
+setup.exe
+dll
+
+
+/dev:---device file
+/dev/null------------------------------> blackhole
+command/script > /dev/null
+
+ls -la
+
+/boot
+
+
+/proc:
+********
+
+/SYS
+
+
+/OPT
+
+
+
+
+/mnt
+
+
+
+
+file level------------------>EFS
+block level------------------------->EBS---b
+object level---------------------------------------------s3
+
+storage services in aws: s3,ebs,efs
+
+diff types of file system:
+*****************************
+
+xfs
+ect2,ext3,ext4
+btrfs
+zfs
+
+
+file system: ext4 ,xfs ,btrfs,zfs,nfs,tmpfs
+high I/o------------------------------------------------xfs\
+
+
+
+xfs:  Jenkins/GitLab/docker/k8s/nexus 
+
+checking the filesystem type of mounted partitons:
+*******************************************************
+
+
+df -T
+lsblk -f
+stat -f /
+mount | column -t
+cat /proc/mounts
+
+sudo xfs_info /
+
+====================================================================================================
+
+07/14/2026:
+**************************
+
+what is file
+
+textfiles
+shell scripts
+images
+vedios
+
+in Linux everything is a file:
+
+types of files:
+****************
+
+-
+d
+l
+c
+b
+p
+s
+storage types:
+*****************
+file level
+object level
+block level 
+
+what is block in Linux:
+***********************
+
+block: smallest unit ofstorage
+
+
+
+
+why we need block:
+*********************
+
+faster disk I/O
+file management
+efficient caching
+
+
+types of blocks:
+*******************
+boot block
+super block
+inode table/block: ls -l
+
+
+file type
+permissions for users/groups/others
+owner
+group
+no of links-------------------------->file attributed/metadata
+size of file
+date
+time
+name of the flie
+
+data block:
+*************
+
+
+indirect blocks:--------------------->very large files
+
+inode ls -I
+indirect block
+datablock
+
+
+commands:
+***********
+
+50
+
+
+block devices vs character devices:
+************************************
+
+feature:  store data in blocks:----------b -block files
+                              : not allow by character files
+
+randomaccess:   yes,no
+
+buffer cache:   yes,no
+
+
+ebs:harddisk/ssd/usb
+
+
+/dev/xvda
+
+character file: keyboard/mouse/terminal
+
+
+command to test and view blocks:
+***********************************
+
+/dev/xvda
+
+ls -la | grep "^b"
+
+
+
+
+sudo dnf/yum install -y nvme-cli
+sudo nvme list
+
+
+
+
+block size:   1024/2048/4096 ---4kb
+fileize:    10KB
+
+storage allocation:
+***********************
+
+4096 bytes:------------block 1
+
+4096  bytes:-----------------block 2
+2048  bytes:---------------------block 3
+
+
+total blocks: 3
+
+
+lsblk
+blkid
+stat
+fdisk
+nvme
+df 
+
+
+
+
+07/15/2026:
+******************
+
+File Operations:
+***************
+
+
+is a place on the disk
+
+How to create empty  file:
+********************
+
+       
+touch is used to create empty file/files
+we update the time stamp of the file
+ACM
+
+
+
+app------deploy at server---
+
+lock files:
+
+
+btime:
+access time: 
+modification
+last status change:------permissions/users/owners
+
+
+
+log management 
+backups
+cicd
+monitoring
+security
+
+ls
+cat
+tac
+touch
+mkdir
+rmdir
+rm
+cp
+mv
+head
+tail
+stat
+file
+timedatactl
+timedatectl list-timezones | grep Asia/Calcutta
+
+timedatectl set-timezone Asia/Calcutta
+
+userspace
+kernel space
+
+
+
+application-----deploy---servers--services----can access by admin/users/clients/end users 
+
+20/07/2026:
+****************
+servers
+applications
+cicd pipelines
+deployments
+storage
+networks
+authenitication
+authorization
+access controls
+
+
+LDAP
+AD
+IAM
+
+
+
+DEVSECOPS:
+***************
+
+SECURITY IS BASED ON LEAST PRIVILEGE
+
+deploy
+backup
+monitor
+audit
+
+
+multi cloud-admin:
+*******************
+
+
+AMI--20 ec2 instance---dev team---20 users
+
+
+platform engineer:
+*********************
+idp
+
+sre
+
+cybersecurity engineer:
+***************************
+
+
+
+AI/ML:
+*****************
+
+
+
+
+gpu server
+
+
+100 developers
+20 qa
+15 devops
+10 sre
+5 security 
+=========
+150 
+
+
+new tester---2 
+
+
+userdel prasad
+
+Jenkins server:-------------Jenkins user/group
+k8s cluster----------------------rbac
+cloud--------------------IAM
+azure:-----------------ad
+nexus/jfrog:--------maven---packages--nexus deploy 
+
+APPlication deployment -pipeline
+infra ----deployment---pipeline
+db---deployment--------pipeline
+
+ml ---------------------pipeline
+
+
++
+
+configuration
+
+
++ 
+
+provisioning
+
+
++
+
+
+migration
+
+
++
+
+cluster management 
+
+
+|
+
+
+patch management
+
+
++
+
+
+idp
+
+
+
++
+
+mlflw
+
+
+useradd
+usemod
+userdel
+groupadd
+groupmod
+groupdel
+PAM
+LDAP
+AD
+IAM
+
+
+
+FDE
+*******
+
+
+what is user:
+*************
+autheniticators
+
+jwt
+openidconnect -oidc
+oauth 
+
+HOW MANY TYPES OF USERS:
+*****************************
+system user--root/superuser
+normal user----
+service account---account----application----services---db/appserver/redis
+
+servers
+services
+application
+
+
+network user
+
+
+sudo user 
+
+
+
+
+
+
+
+
+note: rhel 7:---    system users:--
+uid
+
+ static users :  0 to 200
+  dynamic users: 201-999
+
+uid
+gid
+
+docker run  commands
+
+
+importance of uid/gid/sticky bit in Linux from the devops prospect
+
+8:30 
+
+
+
+21/07/2026:
+**************
+
+UserManagement in Linux:
+*************************
+
+users and groups
+
+files/resources
+
+
+owner/group 
+uid
+gid
+
+useradd prasad---->    /etc/passwd file
+                -----> /etc/shadow
+/home
+/bin/bash
+
+/var/spool
+
+user environment  files are crated
+  .bash_logout
+  .bash_profile-------------------------/etc/skell
+  .bashrc
+
+ways to create users:
+**********************
+
+useradd
+adduser
+newusers
+id
+grep
+/etc/passwd
+/etc/shadow
+sudo useradd prasad
+/etc/default/useradd
+/etc/login.defs
+
+useradd
+usermod
+userdel
+chage
+passwd
+grep
+id
+
+-g
+-G
+pwck
+su - username
+sudo su -  ->login as root user
+
+Create a user account with no login access:
+***********************************************
+
+"Nologin"
+
+
+sudo userdel -r prasad
+userdel: group prasad not removed because it is not the primary group of user prasad.
+
+
+
+LDAP--LINUX
+AD------WINDOWS
+
+
+22/07/2026:
+*******************  
+groupadd
+groupmod
+groupdel
+
+
+group: collection of users
+
+/etc/group
+
+/etc/gshadow
+
+
+
+
+activating and deactivating shadow password mechanism:
+***********************************************************
+
+pwconv, pwunconv, grpconv, grpunconv - convert to and from shadow passwords and groups
+
+
+
+OS-LEVEL:
+**************
+Authenitication 
+user management
+groupmanagement
+
+Authorization:
+*****************
+
+permissions:
+  chmod
+   chown
+   chgrp
+   acl: setfacl,getfacl
+
+
+
+service level:
+*****************
+IAM:
+   users
+   groups
+
+Authorization:
+*****************
+
+  policies
+  roles
+
+
+
+07/30/2026:
+************
+applications
+packages: Grafana/eks clusters/Jenkins/githubactions
+database: db clusters,db backup
+who can read
+modify
+exeute  the files /directories
+Authorization
+
+ls -l
+
+first column:  type of the file
+second: permissions for the users/owners
+thrid: permission for the groups
+4th:  perissions for the others
+
+owner
+groups
+others
+all
+
+
+3 basic permissions:
+********************
+r-----read/view
+w ------write
+x----execute
+
+
+owner        group     others
+
+
+
+
+
+aws management console
+
+
+question: write a IAM policy to launch and connect to the ec2[mumbai] with spefific ip addresss
+question: write a IAM policy to launch ubuntu 26.04 LT,Amazon Linux 2023 6.18 at ohio,mumbai,hyderabad
+          with specific user called you at readonly access.
+
+
+          
+
+
+1) numeric representation/octal reprasentation
+
+4---read
+2---write
+1--- execute
+2) symbolic 
+ r,w,x
+u= user/owner
+g=group
+o=others
+a= all
+
+
+
+
++= add
+
+= set exactly [it will overwrite the existing permissions]
+-= remove
+
+7: 4+2+1==rwx
+5: 4+1 :  r-x
+5: 4+1 : r-x
+
+chmod 777 devops
+chown
+chgrp
+
+permission -denied trouble shooting:
+****************************************
+
+special permissions:
+*********************
+SUID
+SGID
+sticky bit
+umask
+================================
+
+ACL:
+*********
+setfacl
+getfacl
+lsattr
+chattr
+
+
+
+new file: 666 ---maximum base permissions
+
+new directory: 777
+
+
+666
+-022
+========
+644
+
+777
+022
+====
+755
+
+
+
+file/folders
+
+chmod
+
+
+
+
+
+
+umask        file            directory             valueadded meaning
+
+000          666              777                  very open
+
+002          664              775                   group
+
+
+022         644                755                  common
+
+027        640               750                    restricted server setup
+077        600               700                     private
+
+***********************************************************************************************************************************
+
+
+
+
+05/08/2026:
+*************
+
+
+
+dbservers/appservers/webserver/redis/proxy servers
+
+
+visudo
+
+is a safe editor
+vi/vim/nano
+to edit the sudo configuration file
+
+
+
+su - username
+sudo su -
+
+
+/etc/sudoers
+
+x admin------------/etc/sudoers
+y  admin
+
+
+sudo visudo
+
+
+
+
+why do we need visudo:
+*****************
+
+
+what does /etc/sduoersfile
+
+
+who can run sudo
+which users are adminis
+which groups have sudo access
+
+which commands users can execute
+
+wheather passwords is required or not
+
+
+
+
+root ALL=(ALL:ALL) ALL
+
+
+USER=ROOT
+ANY HOST
+can become any user
+can run any command
+
+prasad is not in the sudoers file
+
+
+webserver: nginx/httpd/squid/tomcat/iis
+appservers: jboss/WebLogic/websphere
+
+nginx
+ci/cd  :Jenkins
+docker
+logs
+k8s
+disk--storage
+/dev
+
+
+================================================================================================================
+
+
+DISK Management
+volume management
+file system management
+
+ebs
+s3
+efs
+********************************************************************************************
+06/08/2026:
+**************
+disk management 
+volume management
+file system management
+disk moitoring
+disk encryption techniques
+diskbackups
+kms+ ebs+cloudwatch+sns+s3+efs
+
+what is diskmanagment:
+*******************
+
+
+manages the storage devices in Linux
+create
+add 
+partition
+organize
+allocate 
+monitor
+
+space
+
+
+
+why disk management :
+***********************
+store os files
+
+store application data and logs
+prevent "DISK FULL" issues
+improve  system performance[SRE]
+data availability
+reliabity
+multiple disks
+
+
+disk management topics:
+**************************
+
+
+physical disks-----HDD,SSD,NVME
+DISK NAMING CONEVENTIONS
+parititons
+file system
+mounting and unmounting
+mount points
+
+disk usage
+disk usage monitoring too
+free space checking
+disk formatting
+UUID
+/etc/fstab
+
+swap partition/file
+LVM--Logical volume Manager )--basics
+RAID
+
+disk health
+
+
+monitoring: inframinitoring,db,app,log
+
+common disk names:
+**************
+/dev/sda
+/dev/sdb
+/dev/nvme0n1
+
+/dev/vda
+
+/dev/xvda
+
+block level storage---ebs
+common commands:
+*******************
+lsblk
+fdisk
+df
+du
+mount
+umount
+blkid
+findmnt
+parted
+mkfs
+fsck
+lvm
+
+common file system:
+**********************
+
+xfs
+ntfs
+ext4
+btnrfs
+swap
+
+
+
+Important directories:
+*************************
+/
+/home
+/var
+/boot
+/tmp
+/mnt
+
+google.com
+
+
+
+
+
+
+url: https://in.bookmyshow.com/explore/movies-mumbai?languages=hindi
+
+domain/explore/movies
+
+
+
+
+
+wherer devps engineer use disk management:
+********************************************
+
+ec2--ebs
+k8s---node-storage
+docker --volume 
+rds--storage
+jenkins--build
+log
+backup
+
+problems if disk management is ignored:
+**************************************
+application stop working 
+db can crash due to no free space
+logs can not be written
+boot failure
+ci/cd pipeline fail
+
+
+aws management console
+
+
+
+
+
+
+07/08/2026:
+*************
+
+
+disk:
+***********
+physical storage device
+
+partition: a section of a disk
+volume: storage space used to store files. --LVM
+file system: organize files on  a partition
+
+format:  create a file system on a partition
+
+mount: makes storage accessible  through a folder
+
+
+mount point: folder where storage  appears
+unmount: disconnecting storage safely
+UUID:uniquw id of partition
+    it doensnot change even if device name changes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
