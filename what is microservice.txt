@@ -1,0 +1,11 @@
+what is microservice
+why we need microservice
+what are the various advantages in the microservices
+what are the drawbacks in microservice
+how micro service archicture loo like
+why should I understand the microservice architecture
+how microservices are diff from monolithic architecture
+how the deployment going to look like?
+what re the various chanlleges faces in microservices architecture
+
+what are the diff tools/topics/patterns need to learn?
