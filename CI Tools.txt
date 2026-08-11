@@ -1,0 +1,251 @@
+CI Tools:
+************
+source code management:
+         git---tool--vcs
+         github----repository for hosting services
+
+build
+version
+patch
+hotfix
+fixpack
+release
+
+
+local repository:  .git
+remote repository:  github
+
+network engineer:  yaml files--.GitHub
+docker:             Dockerfile
+k8s:-----------------yaml
+Jenkins:--------------Jenkinsfile
+ansible:------------playbook
+elk
+Grafana
+Prometheus
+maven: pom.xml
+
+
+source code
+
+work-flow- automation+
+
+
+
+build automation:
+       maven
+       gradle
+       SonarQube
+        dependency analysis
+       jfrog/nexus
+CI Tool: Jenkins---give CI Pipeline-using groovy
+       : githubactions
+       :GitLab
+
+
+
+git :---local repository
+remote repo: GitHub/bitbucket/GitLab/codecommit/azurerepo
+              /gcprepo
+
+workflow:
+******************
+   working directory--untracked area
+   index area/staging area----tracked area
+   commit area--local repo
+   push the files to remote repo:--github
+  
+git:
+*********
+cvcs
+dvcs
+
+content-addressable file system with DAG
+DAG: Direct Acylic graph
+
+download gitbash
+
+
+04/13/2026:
+**************
+github-cli
+https
+ssh
+
+
+git architecture:
+******************
+
+working directory:
+index
+local
+
+remote:
+
+objects
+
+SHA-1
+CONTENT-ADDRESSABLE FILE SYSTEM
+
+what are the objects:
+**********************
+
+
+files/commits
+
+refs:branch pointer
+HEAD:current branch pointer
+
+
+config : repo configuration
+
+
+index:staging are
+
+
+  tree:
+***************
+
+
+  blob:
+************
+no filename
+   no metadata
+
+same content=same hash
+
+
+
+  commits:
+  commit= snapshot of the entire project
+
+
+  tags:
+ *********
+
+v1.0.0
+
+
+commit-----------------tree-----------------blob
+hash-based lookup
+
+
+
+git init
+git add
+git status
+git commit
+git rm --cached
+git shortlog
+git log
+git clone --bare
+git clone --mirror
+git clone --depth
+git clone branch branname -single-branch 
+git clone --sparse
+
+
+git remote:
+*********
+remote:---another remote git repo-----GitHub/gitlab/bitbucket/codecommmit
+
+central stoage server
+
+local repo--------------remote repo-must sync
+how to manage this sync:---------------------------> push/pull/fetch
+pull=donwload the latest references+merge 
+fetsh: downloads the references
+what is the diff between clone and pull
+git remote 
+what is origin: pointing to remote repo--default remote repo
+how to show the branchname of specific commit
+
+plumbing commands
+
+
+https://github.com/sresrinivas/etoe.git
+git name-rev
+git rev-parse
+git symoblic-ref
+git rev-list
+git pull
+git push
+git fetch
+========================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
